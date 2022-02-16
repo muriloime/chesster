@@ -9,6 +9,10 @@
       data-target='board.board'
       <%= "draggable-pieces" if @draggable %> 
       position="<%= @fen%>"
+      orientation="<%= orientation %>"
+      move-speed="slow"
+      snapback-speed="500"
+      snap-speed="100"
   >
   </chess-board>
 </div>

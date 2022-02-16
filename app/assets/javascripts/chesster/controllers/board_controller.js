@@ -12,23 +12,18 @@ export default class extends Controller {
     console.log('connected')
     this.highlightStyles = document.createElement("style");
     document.head.append(this.highlightStyles);
-    this.addEventsToBoard(this.boardTarget);
+    this.addDragToBoard();
 
     this.updateMoves();
   }
 
   updateMoves() {
     const fen = this.boardTarget.getAttribute('position');
-
     this.game = new Chess(fen);
   }
 
-  addEventsToBoard(board) {
-    this.addDragToBoard(board);
-  }
-
-  addDragToBoard(board) {
-    board.addEventListener("drag-start", (e) => {
+  addDragToBoard() {
+    this.boardTarget.addEventListener("drag-start", (e) => {
       const { source, piece, position, orientation } = e.detail;
 
       if (this.game.game_over()) {
@@ -47,7 +42,7 @@ export default class extends Controller {
       }
     });
 
-    board.addEventListener("drop", (e) => {
+    this.boardTarget.addEventListener("drop", (e) => {
       this.removeGreySquares();
       const { source, target, setAction } = e.detail;
 
@@ -65,12 +60,12 @@ export default class extends Controller {
       this.updateStatus();
     });
 
-    board.addEventListener("snap-end", (e) => {
+    this.boardTarget.addEventListener("snap-end", (e) => {
       // for castling, en passant, pawn promotion
       this.boardTarget.setPosition(this.game.fen());
     });
 
-    board.addEventListener("mouseover-square", (e) => {
+    this.boardTarget.addEventListener("mouseover-square", (e) => {
       const { square, piece } = e.detail;
 
       const moves = this.game.moves({
@@ -89,7 +84,7 @@ export default class extends Controller {
       }
     });
 
-    board.addEventListener("mouseout-square", (e) => {
+    this.boardTarget.addEventListener("mouseout-square", (e) => {
       this.removeGreySquares();
     });
   }
