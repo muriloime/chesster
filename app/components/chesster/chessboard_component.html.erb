@@ -1,0 +1,8 @@
+<script type="module" src="https://unpkg.com/chessboard-element?module"></script>
+<div class="mx-auto container" style="max-width: 300px;">
+  <chess-board 
+      <%= "draggable-pieces" if @draggable %> 
+      position="<%= @fen%>"
+  >
+  </chess-board>
+</div>

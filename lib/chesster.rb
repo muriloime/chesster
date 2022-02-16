@@ -1,3 +1,4 @@
+require "view_component"
 require "chesster/version"
 require "chesster/engine"
 
