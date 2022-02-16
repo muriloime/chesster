@@ -1,6 +1,12 @@
 <script type="module" src="https://unpkg.com/chessboard-element?module"></script>
-<div class="mx-auto container" style="max-width: 300px;">
-  <chess-board 
+<div 
+  class="mx-auto container" 
+  style="max-width: 300px;"
+  data-controller='board'
+  data-board-id=1
+  >
+  <chess-board
+      data-target='board.board'
       <%= "draggable-pieces" if @draggable %> 
       position="<%= @fen%>"
   >
