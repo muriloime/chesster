@@ -6,9 +6,9 @@
   data-board-id=1
   >
   <chess-board
-      data-target='board.board'
+      data-board-target='board'
       <%= "draggable-pieces" if @draggable %> 
-      position="<%= @fen%>"
+      position="<%= @fen %>"
       orientation="<%= orientation %>"
       move-speed="slow"
       snapback-speed="500"
